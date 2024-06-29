@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Welcome</title>
+</head>
+<body>
+    <h2>Admin Welcome</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.category}"></td>
+            <td>
+                <form action="/users/admin/update" method="post">
+                    <input type="hidden" name="id" th:value="${user.id}">
+                    <input type="text" name="email" th:value="${user.email}">
+                    <input type="password" name="password" placeholder="New Password">
+                    <button type="submit">Update</button>
+                </form>
+                <form action="/users/admin/delete/${user.id}" method="post" th:method="delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

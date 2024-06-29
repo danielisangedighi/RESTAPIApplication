@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.category}"></td>
+            <td>
+                <form action="/users/update" method="post">
+                    <input type="hidden" name="id" th:value="${user.id}">
+                    <input type="text" name="email" th:value="${user.email}">
+                    <input type="password" name="password" placeholder="New Password">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
